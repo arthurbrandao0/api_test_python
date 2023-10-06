@@ -1,6 +1,8 @@
 from behave import given, when, then
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 @given('the user is on login page')
@@ -24,9 +26,28 @@ def step_user_clicks_login_button(context):
     login_button.click()
 
 
-@then('the user is redirected to the home page')
+@when('the user clicks the menu button')
+def step_user_clicks_login_button(context):
+    login_button = context.driver.find_element(By.ID, 'react-burger-menu-btn')
+    login_button.click()
+
+
+@when('the user clicks the logout button')
+def step_user_clicks_login_button(context):
+    login_button = WebDriverWait(context.driver, 5).until(
+        EC.element_to_be_clickable((By.ID, 'logout_sidebar_link'))
+    )
+    login_button.click()
+
+
+@then('the user is redirected to the inventory page')
 def step_user_redirected_to_homepage(context):
     assert context.driver.current_url == 'https://www.saucedemo.com/inventory.html'
+
+
+@then('the user is redirected to the home page')
+def step_user_redirected_to_homepage(context):
+    assert context.driver.current_url == 'https://www.saucedemo.com/'
 
 
 @then('error message "{message}" is displayed')
