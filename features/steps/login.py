@@ -1,13 +1,11 @@
 from behave import given, when, then
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as ec
 
 
 @given('the user is on login page')
 def step_user_on_login_page(context):
-    context.driver = webdriver.Chrome()
     context.driver.get('https://www.saucedemo.com/')
 
 
@@ -35,7 +33,7 @@ def step_user_clicks_login_button(context):
 @when('the user clicks the logout button')
 def step_user_clicks_login_button(context):
     login_button = WebDriverWait(context.driver, 5).until(
-        EC.element_to_be_clickable((By.ID, 'logout_sidebar_link'))
+        ec.element_to_be_clickable((By.ID, 'logout_sidebar_link'))
     )
     login_button.click()
 
