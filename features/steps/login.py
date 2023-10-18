@@ -25,13 +25,13 @@ def step_user_clicks_login_button(context):
 
 
 @when('the user clicks the menu button')
-def step_user_clicks_login_button(context):
+def step_user_clicks_menu_button(context):
     login_button = context.driver.find_element(By.ID, 'react-burger-menu-btn')
     login_button.click()
 
 
 @when('the user clicks the logout button')
-def step_user_clicks_login_button(context):
+def step_user_clicks_logout_button(context):
     login_button = WebDriverWait(context.driver, 5).until(
         ec.element_to_be_clickable((By.ID, 'logout_sidebar_link'))
     )
@@ -39,7 +39,7 @@ def step_user_clicks_login_button(context):
 
 
 @then('the user is redirected to the inventory page')
-def step_user_redirected_to_homepage(context):
+def step_user_redirected_to_inventory_page(context):
     assert context.driver.current_url == 'https://www.saucedemo.com/inventory.html'
 
 
@@ -49,6 +49,6 @@ def step_user_redirected_to_homepage(context):
 
 
 @then('error message "{message}" is displayed')
-def step_user_error(context, message):
+def step_user_error_message_displayed(context, message):
     error_text = context.driver.find_element(By.CSS_SELECTOR, '.error-message-container.error').text
     assert message in error_text
