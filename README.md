@@ -11,13 +11,13 @@ Login Tests Challenge
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/arthurbrandao0/october_challenge.git
+    git clone https://github.com/arthurbrandao0/base_project.git
     ```
 
 2. **Navigate to the project directory:**
 
     ```bash
-    cd october_challenge
+    cd base_project
     ```
 
 3. **Create a virtual environment (recommended):**
