@@ -26,6 +26,6 @@ def step_when_user_makes_request(context, latitude, longitude):
 @then('the response should contain the location information')
 def step_then_response_should_contain_location_info(context):
     location_data = context.weather_data.get('location')
-    print(location_data)
     assert location_data is not None
     assert location_data['country'] == context.table[0]['country']
+    assert location_data['region'] == context.table[0]['region']
