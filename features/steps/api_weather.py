@@ -15,10 +15,11 @@ def step_given_user_wants_weather_info(context):
 
 @when('the user makes a request with latitude {latitude} and longitude {longitude}')
 def step_when_user_makes_request(context, latitude, longitude):
-    context.querystring = {"q": "53.1, -0.13"}
-    print(context.querystring)
+    latitude_strip = latitude.strip('"')
+    longitude_strip = longitude.strip('"')
+
+    context.querystring = {'q':  f'{latitude_strip}, {longitude_strip}'}
     context.response = requests.get(url, headers=headers, params=context.querystring)
-    print(context.response.json())
     context.weather_data = context.response.json()
 
 
